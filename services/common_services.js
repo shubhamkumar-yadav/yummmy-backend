@@ -18,7 +18,12 @@ export async function findFromDb(
 ) {
   try {
     const resp = await collectionName.find(query !== null ? query : {});
-    sendResponse(res, 200, true, responseMessage, resp);
+    if(resp.length){
+      sendResponse(res, 200, true, responseMessage, resp);
+    }
+    else{
+      sendResponse(res, 400, false, "Failed", null);
+    }
   } catch (error) {
     sendResponse(res, 500, false, error.message, null);
   }
