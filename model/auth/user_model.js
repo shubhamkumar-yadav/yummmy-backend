@@ -4,7 +4,8 @@ import { userCollection } from '../../utils/model_utils.js';
 const userSchema = new mongoose.Schema(
   {
     phone: {
-      type: String
+      type: String,
+      unique:true
     },
     password: {
       type: String
